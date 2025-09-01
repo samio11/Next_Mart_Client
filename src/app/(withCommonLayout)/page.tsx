@@ -1,9 +1,11 @@
-import { getUserInfo } from "@/services/auth";
+"use client";
+import { useUser } from "@/context/UseContext";
 import React from "react";
 
-export default async function HomePage() {
-  const user = await getUserInfo();
-  console.log(user);
+export default function HomePage() {
+  const user = useUser();
 
-  return <div>HomePage</div>;
+  console.log(user?.user);
+
+  return <div>HomePage - Welcome {user?.user?.name}</div>;
 }
